@@ -3,6 +3,7 @@ func largestNumber(nums []int) string {
 		is := fmt.Sprintf("%v", nums[i])
 		js := fmt.Sprintf("%v", nums[j])
 		return is+js > js+is
+		// You can compare a string of numbers. eg. "334" < "343"
 	})
 
 	res := ""
