@@ -32,3 +32,8 @@ func permutate(curr, nums []int, output *[][]int) {
 		permutate(start, rest, output)
 	}
 }
+
+// Subsets
+// Permutations
+// Generate Parenthesis 
+
