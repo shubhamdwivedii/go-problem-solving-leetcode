@@ -3,6 +3,10 @@ func rob(nums []int) int {
 	max := 0
 
 	for i, h := range nums {
+		// at each i, max robbery upto that house is:
+		// either maxRobbery upto house i-2 + house i robbery
+		// or maxRobbery upto house i-1
+
 		if i < 2 {
 			if i < 1 || maxRob[i-1] < h {
 				maxRob[i] = h
