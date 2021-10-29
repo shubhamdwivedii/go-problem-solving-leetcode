@@ -1,18 +1,20 @@
 func subsets(nums []int) [][]int {
-	// at each step, either add n ([...,n]) or not add n [...]
-	// sort.Ints(nums)
-	var subsets [][]int
+	var output [][]int
 	var curr []int
-	add(curr, nums, 0, &subsets)
-	return subsets
+	addNum(0, nums, curr, &output)
+	return output
 }
 
-func add(curr []int, nums []int, idx int, subsets *[][]int) {
-	if idx >= len(nums) {
-		*subsets = append(*subsets, curr)
+func addNum(idx int, nums, curr []int, output *[][]int) {
+	if idx > len(nums)-1 {
+		*output = append(*output, curr)
 		return
 	}
 
-	add(curr, nums, idx+1, subsets)
-	add(append(curr, nums[idx]), nums, idx+1, subsets)
+	addNum(idx+1, nums, curr, output)
+	newCurr := make([]int, len(curr)+1)
+	copy(newCurr, curr)
+	// newCurr = append(newCurr, nums[idx])
+	newCurr[len(newCurr)-1] = nums[idx]
+	addNum(idx+1, nums, newCurr, output)
 }
