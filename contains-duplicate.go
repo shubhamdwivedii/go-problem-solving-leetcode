@@ -10,3 +10,6 @@ func containsDuplicate(nums []int) bool {
 	}
 	return false
 }
+
+// T On, S On 
+// If they ask "Can you do it with O(1) extra space?", you can sort the array and check adjacent elements, which is O(n log n) time and potentially O(1) auxiliary space depending on the sorting implementation.

@@ -26,3 +26,15 @@ func moveZeroes(nums []int) []int {
 	}
 	return nums
 }
+
+// TON SO1 
+func moveZeroes(nums []int) {
+    insert := 0
+
+    for i := 0; i < len(nums); i++ {
+        if nums[i] != 0 {
+            nums[insert], nums[i] = nums[i], nums[insert]
+            insert++
+        }
+    }
+}

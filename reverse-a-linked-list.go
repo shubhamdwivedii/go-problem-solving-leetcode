@@ -5,6 +5,8 @@
  *     Next *ListNode
  * }
  */
+
+// TON SON
 func reverseList(head *ListNode) *ListNode {
 	var rev *ListNode
 	rev = new(ListNode)
@@ -18,4 +20,22 @@ func reverseList(head *ListNode) *ListNode {
 	}
 
 	return rev.Next
+}
+
+// Shubh 
+
+func reverseList(head *ListNode) *ListNode {
+    current := head 
+    prev := current
+    for current != nil {
+        next := current.Next  
+        if next == nil {
+            break 
+        }
+        current.Next = next.Next 
+        next.Next = prev
+        prev = next 
+    }
+
+    return prev 
 }

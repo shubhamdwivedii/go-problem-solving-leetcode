@@ -33,3 +33,35 @@ func merge(intervals [][]int) [][]int {
 
 	return merged
 }
+
+
+// TOnlogn SOn 
+
+func merge(intervals [][]int) [][]int {
+    if len(intervals) == 0 {
+        return [][]int{}
+    }
+
+    sort.Slice(intervals, func(i, j int) bool {
+        return intervals[i][0] < intervals[j][0]
+    })
+
+    var output [][]int
+    current := intervals[0]
+
+    for i := 1; i < len(intervals); i++ {
+        if current[1] >= intervals[i][0] {
+            // Overlapping: extend current interval
+            current[1] = max(current[1], intervals[i][1])
+        } else {
+            // No overlap: current interval is complete
+            output = append(output, current)
+            current = intervals[i]
+        }
+    }
+
+    // Add the final interval
+    output = append(output, current)
+
+    return output
+}

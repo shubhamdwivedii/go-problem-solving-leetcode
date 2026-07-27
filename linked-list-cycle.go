@@ -40,3 +40,24 @@ func hasCycle(head *ListNode) bool {
 
 	return false
 }
+
+// TOn SO1
+func hasCycle(head *ListNode) bool {
+    if head == nil {
+        return false
+    }
+
+    tortoise := head
+    rabbit := head
+
+    for rabbit != nil && rabbit.Next != nil {
+        tortoise = tortoise.Next
+        rabbit = rabbit.Next.Next
+
+        if tortoise == rabbit {
+            return true
+        }
+    }
+
+    return false
+}

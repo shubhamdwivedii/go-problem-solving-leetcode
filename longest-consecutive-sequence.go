@@ -27,3 +27,30 @@ func longestConsecutive(nums []int) int {
 	}
 	return max
 }
+
+// TOn SOn
+
+
+func longestConsecutive(nums []int) int {
+    key := make(map[int]bool)
+
+    for _, num := range nums {
+        key[num] = true 
+    }
+
+    max := 0 
+    for k := range key {
+        if !key[k-1] {
+            count := 1 
+            j := k+1 
+            for key[j] {
+                count++ 
+                j++ 
+            }
+            if count > max {
+                max = count
+            }
+        }
+    }
+    return max
+}

@@ -28,3 +28,26 @@ func groupAnagrams(strs []string) [][]string {
 
 	return res
 }
+
+
+// TOn SOn 
+func groupAnagrams(strs []string) [][]string {
+    keymap := make(map[[26]int][]string)
+
+    for _, str := range strs {
+        var count [26]int 
+
+        for _, r := range str {
+            count[r-'a']++ 
+        }
+
+        keymap[count] = append(keymap[count], str)
+    }
+
+    var res [][]string 
+    for _, val := range keymap {
+        res = append(res, val)
+    }
+
+    return res 
+}

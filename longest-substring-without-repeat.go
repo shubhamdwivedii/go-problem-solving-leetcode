@@ -26,3 +26,27 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return max
 }
+
+// TOn SO1
+
+func lengthOfLongestSubstring(s string) int {
+	left := 0
+	maxLength := 0
+
+	lastSeen := make(map[byte]int)
+
+	for right := 0; right < len(s); right++ {
+		if index, ok := lastSeen[s[right]]; ok && index >= left {
+			left = index + 1
+		}
+
+		lastSeen[s[right]] = right
+
+		length := right - left + 1
+		if length > maxLength {
+			maxLength = length
+		}
+	}
+
+	return maxLength
+}

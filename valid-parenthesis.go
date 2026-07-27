@@ -49,3 +49,45 @@ func isValid(s string) bool {
 	}
 	return valid
 }
+
+// TOn SOn 
+
+func isValid(s string) bool {
+    var open []rune
+
+    for _, r := range s {
+        if isOpen(r) {
+            open = append(open, r)
+        } else {
+            // Closing bracket but nothing to match
+            if len(open) == 0 {
+                return false
+            }
+
+            if match(open[len(open)-1], r) {
+                open = open[:len(open)-1]
+            } else {
+                return false
+            }
+        }
+    }
+
+    return len(open) == 0
+}
+
+func isOpen(r rune) bool {
+    return r == '[' || r == '(' || r == '{'
+}
+
+func match(open, close rune) bool {
+    switch open {
+    case '[':
+        return close == ']'
+    case '(':
+        return close == ')'
+    case '{':
+        return close == '}'
+    default:
+        return false
+    }
+}
